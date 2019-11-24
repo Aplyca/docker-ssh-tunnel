@@ -1,4 +1,3 @@
-{{ $tunnels := split (getenv "TUNNEL_LOCALFORWARD") "," }}
 Host tunnel
     HostName {{ getenv "TUNNEL_HOST" "tunnel" }}
     User {{ getenv "TUNNEL_USER" "ubuntu" }}
