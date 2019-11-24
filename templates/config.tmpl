@@ -1,0 +1,10 @@
+{{ $tunnels := split (getenv "TUNNEL_LOCALFORWARD") "," }}
+Host tunnel
+    HostName {{ getenv "TUNNEL_HOST" "tunnel" }}
+    User {{ getenv "TUNNEL_USER" "ubuntu" }}
+    IdentityFile ~/.ssh/private.key
+    ForwardAgent yes
+    StrictHostKeyChecking no
+    IdentitiesOnly yes   
+    {{ range split (getenv "TUNNEL_LOCALFORWARD") "," }}LocalForward {{.}}
+    {{end}}
