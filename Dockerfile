@@ -3,8 +3,7 @@
 FROM kroniak/ssh-client
 LABEL maintainer="Aplyca" description="SSH Tunnel"
 
-RUN wget -q -O /usr/local/bin/confd https://github.com/kelseyhightower/confd/releases/latest/download/confd-0.16.0-linux-amd64 && \
-    chmod +x /usr/local/bin/confd && \
+RUN apk --quiet --progress --update --no-cache -X http://dl-cdn.alpinelinux.org/alpine/edge/testing add confd && \
     mkdir -p /root/.ssh
 
 COPY config /etc/confd/conf.d
